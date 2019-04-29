@@ -96,7 +96,7 @@ objects:
       prometheus.io/port: "9779"
     labels:
       app: http-vertx
-      group: io.openshift.booster
+      group: com.redhat.summit2019
     name: http-vertx
   spec:
     ports:
@@ -106,25 +106,25 @@ objects:
       targetPort: 8080
     selector:
       app: http-vertx
-      group: io.openshift.booster
+      group: com.redhat.summit2019
 
 - apiVersion: apps.openshift.io/v1
   kind: DeploymentConfig
   metadata:
     labels:
       app: http-vertx
-      group: io.openshift.booster
+      group: com.redhat.summit2019
     name: http-vertx
   spec:
     replicas: 1
     selector:
       app: http-vertx
-      group: io.openshift.booster
+      group: com.redhat.summit2019
     template:
       metadata:
         labels:
           app: http-vertx
-          group: io.openshift.booster
+          group: com.redhat.summit2019
       spec:
         containers:
         - env:
@@ -175,7 +175,7 @@ objects:
   metadata:
     labels:
       app: http-vertx
-      group: io.openshift.booster
+      group: com.redhat.summit2019
     name: http-vertx
   spec:
     port:

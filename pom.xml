@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.yourcompany.newapp</groupId>
-  <artifactId>prompt-governor</artifactId>
+  <groupId>com.redhat.summit2019</groupId>
+  <artifactId>insult-starter-vertx</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
-  <name>Vert.x - HTTP</name>
+  <name>Insult Workshop Vert.x Starter Application</name>
   <description>Exposes an HTTP API using Vert.x</description>
   <properties>
     <vertx.version>3.6.3.redhat-00009</vertx.version>
     <vertx-maven-plugin.version>1.0.18</vertx-maven-plugin.version>
-    <vertx.verticle>io.openshift.booster.HttpApplication</vertx.verticle>
+    <vertx.verticle>com.redhat.summit2019.HttpApplication</vertx.verticle>
     <fabric8-maven-plugin.version>3.5.42</fabric8-maven-plugin.version>
     <arquillian-cube.version>1.18.2</arquillian-cube.version>
     <maven.compiler.source>1.8</maven.compiler.source>
