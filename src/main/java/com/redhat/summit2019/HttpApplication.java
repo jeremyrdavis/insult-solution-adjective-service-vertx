@@ -68,41 +68,26 @@ public class HttpApplication extends AbstractVerticle {
   }
 
   private Future<Void> loadAdjectives() {
+
     if (adjectives == null) {
       adjectives = new ArrayList<>();
     }
 
     Future<Void> future = Future.future();
 
-    try{
-      InputStream adjectivesFileStream = getClass().getClassLoader().getResourceAsStream("adjectives.txt");
-      BufferedReader adjectivesReader = new BufferedReader(new InputStreamReader(adjectivesFileStream));
-
-      // reads each line
-      String adjectiveValue;
-      while((adjectiveValue = adjectivesReader.readLine()) != null) {
-        adjectives.add(new Adjective(adjectiveValue));
+    try {
+      InputStream is = this.getClass().getClassLoader().getResourceAsStream("adjectives.txt");
+      if (is != null) {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        reader.lines()
+                .forEach(adj -> adjectives.add(new Adjective(adj.trim())));
       }
-      adjectivesFileStream.close();
       future.complete();
-    }catch(Exception e){
+    } catch (Exception e) {
+      e.printStackTrace();
       future.fail(e.getCause());
     }
 
-
-/*
-    vertx.fileSystem().open("resources/adjectives.txt", new OpenOptions(), res ->{
-      if (res.succeeded()) {
-        AsyncFile file = res.result();
-        Flowable<Buffer> observable = FlowableHelper.toFlowable(file);
-        observable.forEach(data -> adjectives.add(new Adjective(data.toString("UTF-8"))));
-//        observable.forEach(data -> System.out.println("Read data: " + data.toString("UTF-8")));
-        future.complete();
-      }else {
-        future.fail(res.cause());
-      }
-    });
-*/
     return future;
   }
 
